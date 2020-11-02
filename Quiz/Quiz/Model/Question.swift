@@ -8,12 +8,17 @@
 
 import Foundation
 
+// Структура вопроса
 struct Question {
-    
+    //Текст вопроса
     var questionText : String
+    //Массив ответов
     var answers : [String]
+    //Индекс верного ответа
     var rightAnswer : Int
+    //Подсказка - Звонок другу
     var callFriendPrompt : String
+    //Подсказка - Помощь зала
     var audienceHelp : [Float]
     
 }

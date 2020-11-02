@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B50D79DE254C776F00DC203F /* QuestionsInitialiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D79DD254C776F00DC203F /* QuestionsInitialiser.swift */; };
+		B50D79E02550635000DC203F /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D79DF2550635000DC203F /* GameSession.swift */; };
+		B50D79E22550641A00DC203F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D79E12550641A00DC203F /* Game.swift */; };
+		B50D79E425507F0200DC203F /* ScoreViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D79E325507F0200DC203F /* ScoreViewCell.swift */; };
+		B5852D72255095F2002AC53D /* GameSessionsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5852D71255095F2002AC53D /* GameSessionsCaretaker.swift */; };
 		B5C2A61A254B1448006F569D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C2A619254B1448006F569D /* AppDelegate.swift */; };
 		B5C2A61C254B1448006F569D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C2A61B254B1448006F569D /* SceneDelegate.swift */; };
 		B5C2A621254B1448006F569D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5C2A61F254B1448006F569D /* Main.storyboard */; };
@@ -21,6 +25,10 @@
 
 /* Begin PBXFileReference section */
 		B50D79DD254C776F00DC203F /* QuestionsInitialiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsInitialiser.swift; sourceTree = "<group>"; };
+		B50D79DF2550635000DC203F /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
+		B50D79E12550641A00DC203F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		B50D79E325507F0200DC203F /* ScoreViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewCell.swift; sourceTree = "<group>"; };
+		B5852D71255095F2002AC53D /* GameSessionsCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionsCaretaker.swift; sourceTree = "<group>"; };
 		B5C2A616254B1448006F569D /* Quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C2A619254B1448006F569D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5C2A61B254B1448006F569D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +107,9 @@
 			children = (
 				B5C2A630254B27CA006F569D /* Question.swift */,
 				B50D79DD254C776F00DC203F /* QuestionsInitialiser.swift */,
+				B50D79DF2550635000DC203F /* GameSession.swift */,
+				B50D79E12550641A00DC203F /* Game.swift */,
+				B5852D71255095F2002AC53D /* GameSessionsCaretaker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -123,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				B5C2A63A254C6F3B006F569D /* ScoreViewController.swift */,
+				B50D79E325507F0200DC203F /* ScoreViewCell.swift */,
 			);
 			path = Score;
 			sourceTree = "<group>";
@@ -199,12 +211,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5C2A637254C6E57006F569D /* GameViewController.swift in Sources */,
+				B50D79E22550641A00DC203F /* Game.swift in Sources */,
 				B50D79DE254C776F00DC203F /* QuestionsInitialiser.swift in Sources */,
+				B50D79E02550635000DC203F /* GameSession.swift in Sources */,
 				B5C2A631254B27CA006F569D /* Question.swift in Sources */,
 				B5C2A61A254B1448006F569D /* AppDelegate.swift in Sources */,
 				B5C2A61C254B1448006F569D /* SceneDelegate.swift in Sources */,
 				B5C2A639254C6EDB006F569D /* MainMenuViewController.swift in Sources */,
+				B5852D72255095F2002AC53D /* GameSessionsCaretaker.swift in Sources */,
 				B5C2A63B254C6F3B006F569D /* ScoreViewController.swift in Sources */,
+				B50D79E425507F0200DC203F /* ScoreViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
