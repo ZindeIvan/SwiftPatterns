@@ -22,6 +22,12 @@ class Game {
     private var gameSession : GameSession?
     //Объект сохранения и восстановления списка игр
     private let gameSessionsCaretaker = GameSessionsCaretaker()
+    //Свойство порядка вопросов
+    var questionsOrder : QuestionsOrder = .ordered
+    //Свойство использования пользовательских впоросов
+    var useUserQuestions : Bool = false
+    //Свойство темы вопросов
+    var questionsTopic : QuestionsTopic = .Comics
     
     private init() {
         self.gameSessions = self.gameSessionsCaretaker.retrieveRecords()
