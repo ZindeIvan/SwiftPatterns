@@ -10,13 +10,13 @@ import UIKit
 //Класс ячейки таблицы счета
 class ScoreViewCell : UITableViewCell {
     
-    @IBOutlet weak var dateLabel : UILabel!
-    @IBOutlet weak var scoreLabel : UILabel!
-    @IBOutlet weak var answersLabel : UILabel!
-    @IBOutlet weak var loseLabel : UILabel!
-    @IBOutlet weak var fiftyFiftyImageView : UIImageView!
-    @IBOutlet weak var friendCallImageView : UIImageView!
-    @IBOutlet weak var audienceHelpImageView : UIImageView!
+    @IBOutlet private weak var dateLabel : UILabel!
+    @IBOutlet private weak var scoreLabel : UILabel!
+    @IBOutlet private weak var answersLabel : UILabel!
+    @IBOutlet private weak var loseLabel : UILabel!
+    @IBOutlet private weak var fiftyFiftyImageView : UIImageView!
+    @IBOutlet private weak var friendCallImageView : UIImageView!
+    @IBOutlet private weak var audienceHelpImageView : UIImageView!
     
     //Метод конфигурирования ячейки
     func configureCell(gameSession: GameSession){

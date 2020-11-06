@@ -31,7 +31,7 @@ class GameViewController: UIViewController {
     //Массив вопросов
     private var questions : [Question] = []
     //Номер текущего вопроса
-    private var currentQuestionNumber = 0
+    private var currentQuestionNumber = Observable<Int>(0)
     //Массив баллов за вопросы
     private var hightScore : [String] = []
     //Свойство индекатор - Использована ли подсказка 50/50
@@ -62,20 +62,31 @@ class GameViewController: UIViewController {
     var onAudienceHelpUse: (() -> Void)?
     //Делигат для события конца игры
     var deligate : GameViewControllerDelegate?
+    //Стратегия порядка вопросов
+    var questionsOrderStrategy : QuestionsOrderStrategy?
+    //Строитель вопросов
+    var questionsBuilder : QuestionsBuilder?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         hightScore = getHighScore()
         loadQuestions()
-        prepareNextQuestion(currentQuestionNumber)
-        setHighScore()
+        addCurrentQuestionNumberObserver()
+        prepareNextQuestion(currentQuestionNumber.value)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        //Отписываемся от наблюдателей
+        currentQuestionNumber.removeObserver(self)
     }
     
     //Метод загрузки вопросов из инициализатора
     private func loadQuestions () {
-        let initialiser = QuestionsInitialiser()
-        questions = initialiser.initializeQuestions(topic: .Comics)
+        questions = questionsBuilder?.build() ?? []
+        guard let questionsOrderStrategy = questionsOrderStrategy else { return }
+        questions = questionsOrderStrategy.getNextQuestion(questions: questions)
     }
     
     //Метод подготоки следующего вопроса
@@ -125,8 +136,8 @@ class GameViewController: UIViewController {
     //Метод проверки верного ответа
     private func checkRightAnswer(_ pickedAnswer : Int) {
         guard (0...3).contains(pickedAnswer) else {return}
-        if pickedAnswer == questions[currentQuestionNumber].rightAnswer {
-            if currentQuestionNumber == questions.count - 1 {
+        if pickedAnswer == questions[currentQuestionNumber.value].rightAnswer {
+            if currentQuestionNumber.value == questions.count - 1 {
                 showAlert(title: "Конец игры",
                           message: "Победа",
                           okHandler: ({ [weak self] action in
@@ -134,9 +145,8 @@ class GameViewController: UIViewController {
                           }))
             }
             else {
-                currentQuestionNumber += 1
-                prepareNextQuestion(currentQuestionNumber)
-                setHighScore()
+                currentQuestionNumber.value += 1
+                prepareNextQuestion(currentQuestionNumber.value)
             }
         }
         else {
@@ -149,18 +159,13 @@ class GameViewController: UIViewController {
         }
     }
     
-    //Метод установки текущего счета
-    private func setHighScore() {
-        scoreLabel.text = hightScore[currentQuestionNumber]
-    }
-    
     //Метод завершения игры
     private func endGame(_ gameEndState: GameEndState) {
         let gameScore = getFinalScore(gameEndState)
         self.deligate?.didEndGame(lose: (gameEndState == .win ? false : true),
                                   score: gameScore,
                                   totalAnswersCount: questions.count,
-                                  correctAnswersCount: (gameEndState == .win ? currentQuestionNumber + 1 : currentQuestionNumber))
+                                  correctAnswersCount: (gameEndState == .win ? currentQuestionNumber.value + 1 : currentQuestionNumber.value))
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -168,12 +173,12 @@ class GameViewController: UIViewController {
     private func getFinalScore(_ gameEndState: GameEndState)-> String{
         switch gameEndState {
         case .lose:
-            guard let maxSaftyScore = getSaftyQuestions().filter({$0 <= currentQuestionNumber - 1}).max() else {return "0"}
-            return hightScore[maxSaftyScore]
+            guard let maxSafetyScore = getSafetyQuestions().filter({$0 <= currentQuestionNumber.value - 1}).max() else {return "0"}
+            return getHighScoreText(maxSafetyScore)
         case .win:
-            return hightScore[currentQuestionNumber]
+            return getHighScoreText(currentQuestionNumber.value)
         case .withdraw:
-            return (currentQuestionNumber == 0 ? "0" : hightScore[currentQuestionNumber - 1])
+            return (currentQuestionNumber.value == 0 ? "0" : getHighScoreText(currentQuestionNumber.value - 1))
         }
     }
     
@@ -197,7 +202,7 @@ class GameViewController: UIViewController {
     
     @IBAction func fiftyFiftyPick(_ sender: Any) {
         fiftyFiftyUsed = true
-        let rightAnswer = questions[currentQuestionNumber].rightAnswer
+        let rightAnswer = questions[currentQuestionNumber.value].rightAnswer
         switch rightAnswer {
         case 0 : secondAnswerButton.isHidden = true
                  fourthAnswerButton.isHidden = true
@@ -217,16 +222,16 @@ class GameViewController: UIViewController {
     @IBAction func friendCallPick(_ sender: Any) {
         friendCallUsed = true
         showAlert(title: "Звонок другу",
-                  message: questions[currentQuestionNumber].callFriendPrompt)
+                  message: questions[currentQuestionNumber.value].callFriendPrompt)
         onFriendCallUse?()
     }
     
     @IBAction func audienceHelpPick(_ sender: Any) {
         audienceHelpUsed = true
-        let helpPrompt = "\(questions[currentQuestionNumber].answers[0]) : \(questions[currentQuestionNumber].audienceHelp[0])%\n"
-            + "\(questions[currentQuestionNumber].answers[1]) : \(questions[currentQuestionNumber].audienceHelp[1])%\n"
-            + "\(questions[currentQuestionNumber].answers[2]) : \(questions[currentQuestionNumber].audienceHelp[2])%\n"
-            + "\(questions[currentQuestionNumber].answers[3]) : \(questions[currentQuestionNumber].audienceHelp[3])%\n"
+        let helpPrompt = "\(questions[currentQuestionNumber.value].answers[0]) : \(questions[currentQuestionNumber.value].audienceHelp[0])%\n"
+            + "\(questions[currentQuestionNumber.value].answers[1]) : \(questions[currentQuestionNumber.value].audienceHelp[1])%\n"
+            + "\(questions[currentQuestionNumber.value].answers[2]) : \(questions[currentQuestionNumber.value].audienceHelp[2])%\n"
+            + "\(questions[currentQuestionNumber.value].answers[3]) : \(questions[currentQuestionNumber.value].audienceHelp[3])%\n"
         showAlert(title: "Помощь зала",
                   message: helpPrompt)
         onAudienceHelpUse?()
@@ -264,8 +269,16 @@ extension GameViewController {
                 "15 : 3 000 000"]
     }
     
-    private func getSaftyQuestions ()-> [Int] {
+    private func getSafetyQuestions ()-> [Int] {
         return [4,9]
+    }
+    
+    private func getHighScoreText (_ questionIndex : Int) -> String {
+        if hightScore.count > questionIndex {
+            return hightScore[questionIndex]
+        } else {
+            return "Доп. вопрос"
+        }
     }
 }
 
@@ -291,4 +304,18 @@ extension GameViewController {
 //Протокол для делигирования конца игры
 protocol GameViewControllerDelegate: class {
     func didEndGame(lose: Bool, score : String, totalAnswersCount: Int, correctAnswersCount: Int)
+}
+
+//Расширения для Наблюдателя
+extension GameViewController {
+    //Метод добавления наблюдателя за изменением индекса текущего вопроса
+    private func addCurrentQuestionNumberObserver() {
+        currentQuestionNumber.addObserver(self,
+                                          removeIfExists: true,
+                                          options: [.new, .initial]) { [weak self] (questionNumber, _) in
+                                            guard let self = self else { return }
+                                            self.scoreLabel.text = self.getHighScoreText(questionNumber)
+        }
+    }
+    
 }

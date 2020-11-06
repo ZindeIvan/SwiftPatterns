@@ -35,7 +35,20 @@ class MainMenuViewController: UIViewController{
             destination.onAudienceHelpUse = { [weak self]  in
                 self?.gameManager.useAudienceHelp()
             }
+            
+            switch gameManager.questionsOrder {
                 
+            case .ordered:
+                destination.questionsOrderStrategy = OrderedQuestionsStrategy()
+            case .random:
+                destination.questionsOrderStrategy = RandomQuestionsStrategy()
+            }
+            
+            let questionsBuilder = QuestionsBuilder()
+            questionsBuilder.setQuestionsTopic(gameManager.questionsTopic)
+            questionsBuilder.setUseUserQuestions(gameManager.useUserQuestions)
+            destination.questionsBuilder = questionsBuilder
+            
         default:
             break
         }

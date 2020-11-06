@@ -9,7 +9,7 @@
 import Foundation
 
 // Структура вопроса
-struct Question {
+struct Question : Codable {
     //Текст вопроса
     var questionText : String
     //Массив ответов

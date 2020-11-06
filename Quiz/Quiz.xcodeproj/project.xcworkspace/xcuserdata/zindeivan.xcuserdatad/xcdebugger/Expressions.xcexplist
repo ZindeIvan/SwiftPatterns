@@ -3,13 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "Game.finishGameSession(lose:score:totalQuestionsCount:correctAnswersCount:):Game.swift">
+         contextName = "AddQuestionsViewController.userQuestions.didset:AddQuestionsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "Float(correctAnswersCount) / Float(totalQuestionsCount)">
-            </PersistentString>
-            <PersistentString
-               value = "self.gameSession">
+               value = "self.userQuestions">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -36,8 +33,35 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "AddQuestionsViewController.userQuestionsSwitchAction(_:):AddQuestionsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "userQuestionsSwitch.isOn">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddQuestionsViewController.questionChanged(question:):AddQuestionsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentQuestionIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Game.startGame():Game.swift">
          <PersistentStrings>
+            <PersistentString
+               value = "self.gameSession">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Game.finishGameSession(lose:score:totalQuestionsCount:correctAnswersCount:):Game.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Float(correctAnswersCount) / Float(totalQuestionsCount)">
+            </PersistentString>
             <PersistentString
                value = "self.gameSession">
             </PersistentString>
