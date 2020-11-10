@@ -57,11 +57,6 @@ class LikeControlView : UIControl {
     //Элемент группировки
     private var stackView : UIStackView!
     
-    //Цвет отмеченного лайка
-    private let selectedColor : UIColor = .red
-    //Цвет не активного лайка
-    private let diselectedColor : UIColor = .black
-    
     //Метод установки элементов
     private func setupView() {
         //Уберем цвет фона элемента
@@ -74,12 +69,12 @@ class LikeControlView : UIControl {
                                 #selector(likePressed(_:)),
                              for: .touchUpInside)
         likeButton.backgroundColor = .clear
-        likeButton.tintColor = diselectedColor
+        likeButton.tintColor = UIColor.diselectedLikeColor
         
         //Создадим надпись количества лайков
         likeCountLabel = UILabel()
         likeCountLabel.text = String(likeCount)
-        likeCountLabel.textColor = diselectedColor
+        likeCountLabel.textColor = UIColor.diselectedLikeColor
         
         //Создадим элемент группировки добавим на него элементы и настроим
         stackView = UIStackView()
@@ -109,8 +104,8 @@ class LikeControlView : UIControl {
             //Установим картинку заполненного сердца
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             //Изменим цвет элементов
-            likeCountLabel.textColor = selectedColor
-            likeButton.tintColor = selectedColor
+            likeCountLabel.textColor = UIColor.selectedLikeColor
+            likeButton.tintColor = UIColor.selectedLikeColor
         }
         //Если лайк отжат
         else {
@@ -119,8 +114,8 @@ class LikeControlView : UIControl {
             //Установим картинку пустого сердца
             likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
             //Изменим цвет элементов
-            likeCountLabel.textColor = diselectedColor
-            likeButton.tintColor = diselectedColor
+            likeCountLabel.textColor = UIColor.diselectedLikeColor
+            likeButton.tintColor = UIColor.diselectedLikeColor
         }
     }
     

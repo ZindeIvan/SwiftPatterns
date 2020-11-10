@@ -16,6 +16,10 @@ class NewsTableViewController : BaseViewController {
     @IBOutlet private weak var newsTableView : UITableView!
     
     private var refreshControl : UIRefreshControl?
+    //Свойство ссылка на фабрику новостей
+    private let viewModelFactory = NewsViewModelFactory()
+    //Свойство список новостей подготовленных фабрикой
+    private var viewModels: [NewsViewModel] = []
     
     //Массив новостей
     private var newsList : [News] = []
@@ -45,7 +49,7 @@ extension NewsTableViewController : UITableViewDataSource, UITableViewDelegate  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell") as? NewsCell else { fatalError() }
         //Сконфигурируем ячейку
-        cell.configure(news: newsList[indexPath.row])
+        cell.configure(with: viewModels[indexPath.row])
         cell.delegate = self
         return cell
     }
@@ -61,16 +65,18 @@ extension NewsTableViewController {
     //Метод загрузки списка новостей из сети
     private func loadNewsFromNetwork(startFrom : String, completion: (() -> Void)? = nil){
         NetworkService.shared.loadNews(startFrom: startFrom, token: Session.instance.token, filter: .post, newsCount: 20){ [weak self] result in
+            guard let self = self else { return }
             switch result {
             case let .success(news):
                 DispatchQueue.main.async {
-                    self?.newsList = news
-                    self?.newsTableView.reloadData()
+                    self.newsList = news
+                    self.viewModels = self.viewModelFactory.constructViewModel(from: news)
+                    self.newsTableView.reloadData()
                     completion?()
                 }
             case let .failure(error):
                 DispatchQueue.main.async {
-                    self?.showAlert(title: "Error", message: error.localizedDescription)
+                    self.showAlert(title: "Error", message: error.localizedDescription)
                 }
             }
         }
@@ -115,16 +121,18 @@ extension NewsTableViewController : UITableViewDataSourcePrefetching {
         if indexPaths.contains(where: isLoadingCell(for:)) {
             //Jтправляем сетевой запрос загрузки новостей
             NetworkService.shared.loadNews(startFrom: Session.instance.nextFrom, token: Session.instance.token, filter: .post, newsCount: 20){ [weak self] result in
+                guard let self = self else { return }
                 switch result {
                 case let .success(news):
                     DispatchQueue.main.async {
                         //Добавим новости в конец ленты
-                        self?.newsList += news as [News]
-                        self?.newsTableView.reloadData()
+                        self.newsList += news as [News]
+                        self.viewModels = self.viewModelFactory.constructViewModel(from: self.newsList)
+                        self.newsTableView.reloadData()
                     }
                 case let .failure(error):
                     DispatchQueue.main.async {
-                        self?.showAlert(title: "Error", message: error.localizedDescription)
+                        self.showAlert(title: "Error", message: error.localizedDescription)
                     }
                 }
             }

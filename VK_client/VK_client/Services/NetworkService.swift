@@ -28,18 +28,7 @@ class NetworkService {
         let session = Alamofire.Session(configuration: configuration)
         return session
     }()
-    
-    //Перечисление типов альбомов фото пользователей
-    enum AlbumID : String {
-        case wall = "wall"
-        case profile = "profile"
-        case saved = "saved"
-    }
-    
-    enum NewsfeedFilters : String {
-        case post = "post"
-        case photo = "photo"
-    }
+
     
     //Метод формирования сетевого запроса и вывода результата в кансоль
     private func networkRequest<T: Decodable>( type : T.Type, URL : String, method : HTTPMethod, parameters : Parameters, completion: ((Swift.Result<[Any], Error>) -> Void)? = nil){
@@ -343,3 +332,14 @@ class NewsResponse : Decodable{
     
 }
 
+//Перечисление типов альбомов фото пользователей
+enum AlbumID : String {
+    case wall = "wall"
+    case profile = "profile"
+    case saved = "saved"
+}
+
+enum NewsfeedFilters : String {
+    case post = "post"
+    case photo = "photo"
+}
