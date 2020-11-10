@@ -87,30 +87,30 @@ class NewsCell : UITableViewCell {
     
     
     //Метод конфигурирования ячейки
-    func configure(news: News){
+    func configure(with newsviewModels: NewsViewModel){
         //Установим автора
-        self.newsOwner.text = String(news.owner)
+        self.newsOwner.text = newsviewModels.newsOwner
         //Установим текст новости
-        self.newsText.text = news.text
+        self.newsText.text = newsviewModels.newsText
         //Сконфигурируем высоту текстового поля новостей
         configureNewsTextHeight()
         //Установим дату новости
-        self.newsDate.text = news.date
+        self.newsDate.text = newsviewModels.newsDate
         //Установим количество просмотров
-        self.watchedCountLabel.text = String(news.viewsCount)
+        self.watchedCountLabel.text = newsviewModels.watchedCount
         //Установим надпись лайков
-        self.likeLabel.text = String(news.likesCount)
-        self.commentLabel.text = String(news.commentsCount)
-        self.shareLabel.text = String(news.repostsCount)
+        self.likeLabel.text = newsviewModels.likeCountString
+        self.commentLabel.text = newsviewModels.commentCount
+        self.shareLabel.text = newsviewModels.shareCount
         //Сконфигурируем высоту изображения
-        configureNewsImageHeight(photoWidth: news.photoSizeXWidth, photoHeight: news.photoSizeXHeight)
+        configureNewsImageHeight(photoWidth: newsviewModels.photoWidth, photoHeight: newsviewModels.photoHeight)
         //Установим картинку новости
-        self.newsImage.sd_setImage(with: URL(string: news.photoSizeX), placeholderImage: UIImage(named: "newsImageError"))
+        self.newsImage.sd_setImage(with: newsviewModels.photoURL, placeholderImage: UIImage(named: "newsImageError"))
         
         //Установим иконку новости
-        self.newsIconView.sd_setImage(with: URL(string: news.photo50), placeholderImage: UIImage(named: "error"))
+        self.newsIconView.sd_setImage(with: newsviewModels.newsIconURL, placeholderImage: UIImage(named: "error"))
         //Установим количество лайков
-        self.likeCount = news.likesCount
+        self.likeCount = newsviewModels.likeCount
     }
     
     //Метод вычисления высоты текстового поля по содержимому
