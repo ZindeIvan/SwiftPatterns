@@ -1,14 +1,14 @@
 //
-//  PlayerState.swift
+//  AIState.swift
 //  XO_Game
 //
-//  Created by Зинде Иван on 11/12/20.
+//  Created by Зинде Иван on 11/13/20.
 //  Copyright © 2020 Зинде Иван. All rights reserved.
 //
 
 import Foundation
-
-class PlayerState: GameState {
+//Класс состояние игры - игра против компьютера
+class AIState: GameState {
     var isMoveCompleted: Bool = false
     
     public let player: Player
@@ -28,38 +28,42 @@ class PlayerState: GameState {
     }
     
     func begin() {
-        if gameViewController?.gameType == GameType.versusPlayer {
+        gameViewController?.firstPlayerTurnLabel.isHidden = true
+        gameViewController?.secondPlayerTurnLabel.isHidden = true
+        switch player {
+        case .first:
+            gameViewController?.yourTurnLabel.isHidden = false
+        case .second:
             gameViewController?.yourTurnLabel.isHidden = true
-            switch player {
-            case .first:
-                gameViewController?.firstPlayerTurnLabel.isHidden = false
-                gameViewController?.secondPlayerTurnLabel.isHidden = true
-            case .second:
-                gameViewController?.firstPlayerTurnLabel.isHidden = true
-                gameViewController?.secondPlayerTurnLabel.isHidden = false
-            }
-        } else {
-            gameViewController?.firstPlayerTurnLabel.isHidden = true
-            gameViewController?.secondPlayerTurnLabel.isHidden = true
-            switch player {
-            case .first:
-                gameViewController?.yourTurnLabel.isHidden = false
-            case .second:
-                gameViewController?.yourTurnLabel.isHidden = true
-            }
         }
         
-        gameViewController?.winnerLabel.isHidden = true
+        addMark(at: getNextPosition())
+    }
+    
+    func getNextPosition() -> GameboardPosition{
+        
+        guard let gameBoardView = gameBoardView else { return GameboardPosition.init(column: 1, row: 1)}
+        
+        while true {
+            let column = Int.random(in: 0..<GameboardSize.columns)
+            let row = Int.random(in: 0..<GameboardSize.rows)
+            let position = GameboardPosition.init(column: column, row: row)
+            if gameBoardView.canPlaceMarkView(at: position) {
+                return position
+            }
+        }
     }
     
     func addMark(at position: GameboardPosition) {
         Log(action: .playerSetMark(player: player, position: position))
         
-        guard let gameBoardView = gameBoardView, gameBoardView.canPlaceMarkView(at: position) else {
+        guard let gameBoardView = gameBoardView else {
             return
         }
         gameBoard?.setPlayer(player, at: position)
         gameBoardView.placeMarkView(markViewPrototype.copy(), at: position)
         isMoveCompleted = true
+        gameViewController?.counter += 1
+        gameViewController?.setNextState()
     }
 }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B57C558F255D86F50055F5F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C558E255D86F50055F5F4 /* AppDelegate.swift */; };
 		B57C5591255D86F50055F5F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C5590255D86F50055F5F4 /* SceneDelegate.swift */; };
-		B57C5593255D86F50055F5F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C5592255D86F50055F5F4 /* ViewController.swift */; };
 		B57C5596255D86F50055F5F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57C5594255D86F50055F5F4 /* Main.storyboard */; };
 		B57C5598255D86F60055F5F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57C5597255D86F60055F5F4 /* Assets.xcassets */; };
 		B57C559B255D86F60055F5F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57C5599255D86F60055F5F4 /* LaunchScreen.storyboard */; };
@@ -32,13 +31,19 @@
 		B57C55CC255D8AD00055F5F4 /* LogReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C55CB255D8AD00055F5F4 /* LogReceiver.swift */; };
 		B57C55CE255D8AE70055F5F4 /* LogInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C55CD255D8AE70055F5F4 /* LogInvoker.swift */; };
 		B57C55D0255D8AFA0055F5F4 /* LogFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C55CF255D8AFA0055F5F4 /* LogFunc.swift */; };
+		B57C55D3255D976F0055F5F4 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C55D2255D976F0055F5F4 /* MainMenuViewController.swift */; };
+		B57C55D5255E7A350055F5F4 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C55D4255E7A350055F5F4 /* GameType.swift */; };
+		B57C55D7255E7B660055F5F4 /* AIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C55D6255E7B660055F5F4 /* AIState.swift */; };
+		B57C55D9255ED5F30055F5F4 /* MoveInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C55D8255ED5F30055F5F4 /* MoveInvoker.swift */; };
+		B57C55DB255ED6520055F5F4 /* MoveCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C55DA255ED6520055F5F4 /* MoveCommand.swift */; };
+		B57C55DD255EDB580055F5F4 /* StackMovesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C55DC255EDB580055F5F4 /* StackMovesState.swift */; };
+		B57C55DF255EDD810055F5F4 /* ExecuteMovesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C55DE255EDD810055F5F4 /* ExecuteMovesState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B57C558B255D86F50055F5F4 /* XO_Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XO_Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57C558E255D86F50055F5F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B57C5590255D86F50055F5F4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B57C5592255D86F50055F5F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B57C5595255D86F50055F5F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B57C5597255D86F60055F5F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B57C559A255D86F60055F5F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,6 +67,13 @@
 		B57C55CB255D8AD00055F5F4 /* LogReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogReceiver.swift; sourceTree = "<group>"; };
 		B57C55CD255D8AE70055F5F4 /* LogInvoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInvoker.swift; sourceTree = "<group>"; };
 		B57C55CF255D8AFA0055F5F4 /* LogFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFunc.swift; sourceTree = "<group>"; };
+		B57C55D2255D976F0055F5F4 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		B57C55D4255E7A350055F5F4 /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
+		B57C55D6255E7B660055F5F4 /* AIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIState.swift; sourceTree = "<group>"; };
+		B57C55D8255ED5F30055F5F4 /* MoveInvoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveInvoker.swift; sourceTree = "<group>"; };
+		B57C55DA255ED6520055F5F4 /* MoveCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveCommand.swift; sourceTree = "<group>"; };
+		B57C55DC255EDB580055F5F4 /* StackMovesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackMovesState.swift; sourceTree = "<group>"; };
+		B57C55DE255EDD810055F5F4 /* ExecuteMovesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecuteMovesState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +110,11 @@
 				B57C55C3255D8A7A0055F5F4 /* Prototype */,
 				B57C55BC255D8A270055F5F4 /* State */,
 				B57C55B7255D89CE0055F5F4 /* Game */,
+				B57C55D1255D97470055F5F4 /* MainMenu */,
 				B57C55AD255D89060055F5F4 /* Views */,
 				B57C55A4255D88270055F5F4 /* Models */,
 				B57C55A3255D87DD0055F5F4 /* Storyboards */,
 				B57C55A2255D87AA0055F5F4 /* SupportingFiles */,
-				B57C5592255D86F50055F5F4 /* ViewController.swift */,
 			);
 			path = XO_Game;
 			sourceTree = "<group>";
@@ -134,6 +146,7 @@
 				B57C55A7255D885F0055F5F4 /* GameboardSize.swift */,
 				B57C55A9255D88780055F5F4 /* Gameboard.swift */,
 				B57C55AB255D88950055F5F4 /* Player.swift */,
+				B57C55D4255E7A350055F5F4 /* GameType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -172,6 +185,9 @@
 				B57C55BD255D8A350055F5F4 /* GameState.swift */,
 				B57C55BF255D8A4C0055F5F4 /* PlayerState.swift */,
 				B57C55C1255D8A660055F5F4 /* GameOverState.swift */,
+				B57C55D6255E7B660055F5F4 /* AIState.swift */,
+				B57C55DC255EDB580055F5F4 /* StackMovesState.swift */,
+				B57C55DE255EDD810055F5F4 /* ExecuteMovesState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -192,8 +208,18 @@
 				B57C55CB255D8AD00055F5F4 /* LogReceiver.swift */,
 				B57C55CD255D8AE70055F5F4 /* LogInvoker.swift */,
 				B57C55CF255D8AFA0055F5F4 /* LogFunc.swift */,
+				B57C55D8255ED5F30055F5F4 /* MoveInvoker.swift */,
+				B57C55DA255ED6520055F5F4 /* MoveCommand.swift */,
 			);
 			path = CommandPattern;
+			sourceTree = "<group>";
+		};
+		B57C55D1255D97470055F5F4 /* MainMenu */ = {
+			isa = PBXGroup;
+			children = (
+				B57C55D2255D976F0055F5F4 /* MainMenuViewController.swift */,
+			);
+			path = MainMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,28 +293,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B57C5593255D86F50055F5F4 /* ViewController.swift in Sources */,
 				B57C55B4255D896A0055F5F4 /* XView.swift in Sources */,
 				B57C55BB255D8A0A0055F5F4 /* Referee.swift in Sources */,
 				B57C55A6255D88460055F5F4 /* GameboardPosition.swift in Sources */,
+				B57C55D7255E7B660055F5F4 /* AIState.swift in Sources */,
 				B57C55D0255D8AFA0055F5F4 /* LogFunc.swift in Sources */,
 				B57C55CE255D8AE70055F5F4 /* LogInvoker.swift in Sources */,
+				B57C55DD255EDB580055F5F4 /* StackMovesState.swift in Sources */,
+				B57C55DB255ED6520055F5F4 /* MoveCommand.swift in Sources */,
+				B57C55DF255EDD810055F5F4 /* ExecuteMovesState.swift in Sources */,
 				B57C55B6255D89830055F5F4 /* GameboardView.swift in Sources */,
 				B57C55C5255D8A890055F5F4 /* Copying.swift in Sources */,
 				B57C55C2255D8A660055F5F4 /* GameOverState.swift in Sources */,
 				B57C55B9255D89DA0055F5F4 /* GameViewController.swift in Sources */,
 				B57C55AA255D88780055F5F4 /* Gameboard.swift in Sources */,
+				B57C55D3255D976F0055F5F4 /* MainMenuViewController.swift in Sources */,
 				B57C55BE255D8A350055F5F4 /* GameState.swift in Sources */,
 				B57C55CA255D8ABC0055F5F4 /* LogCommand.swift in Sources */,
 				B57C55CC255D8AD00055F5F4 /* LogReceiver.swift in Sources */,
 				B57C558F255D86F50055F5F4 /* AppDelegate.swift in Sources */,
 				B57C55B2255D89540055F5F4 /* OView.swift in Sources */,
 				B57C55C8255D8AA80055F5F4 /* LogAction.swift in Sources */,
+				B57C55D9255ED5F30055F5F4 /* MoveInvoker.swift in Sources */,
 				B57C55C0255D8A4C0055F5F4 /* PlayerState.swift in Sources */,
 				B57C55AC255D88950055F5F4 /* Player.swift in Sources */,
 				B57C55A8255D885F0055F5F4 /* GameboardSize.swift in Sources */,
 				B57C5591255D86F50055F5F4 /* SceneDelegate.swift in Sources */,
 				B57C55B0255D89290055F5F4 /* MarkView.swift in Sources */,
+				B57C55D5255E7A350055F5F4 /* GameType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
