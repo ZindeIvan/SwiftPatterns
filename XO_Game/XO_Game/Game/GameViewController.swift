@@ -17,17 +17,22 @@ class GameViewController: UIViewController {
             currentState.begin()
         }
     }
-    private var counter: Int = 0
+    var counter: Int = 0
 
     @IBOutlet var gameboardView: GameboardView!
     @IBOutlet var firstPlayerTurnLabel: UILabel!
     @IBOutlet var secondPlayerTurnLabel: UILabel!
     @IBOutlet var winnerLabel: UILabel!
     @IBOutlet var restartButton: UIButton!
+    @IBOutlet var yourTurnLabel: UILabel!
+    
+    var gameType : GameType?
+    private var moveInvoker : MoveInvoker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        moveInvoker = MoveInvoker(reciever: gameboardView)
         setFirstState()
         
         gameboardView.onSelectPosition = { [weak self] position in
@@ -37,19 +42,40 @@ class GameViewController: UIViewController {
             if self.currentState.isMoveCompleted {
                 self.setNextState()
             }
-            
-//            self.gameboardView.placeMarkView(XView(), at: position)
         }
     }
     
     private func setFirstState() {
         let player = Player.first
-        currentState = PlayerState(player: player, gameViewController: self,
+        if gameType == GameType.stackMoves {
+            currentState = StackMovesState(player: player, gameViewController: self, markViewPrototype: player.markViewPrototype, moveInvoker: moveInvoker ?? MoveInvoker(reciever: gameboardView))
+        } else {
+            currentState = PlayerState(player: player, gameViewController: self,
                                    gameBoard: gameBoard, gameBoardView: gameboardView,
                                    markViewPrototype: player.markViewPrototype)
+        }
     }
     
-    private func setNextState() {
+    func setNextState() {
+        
+        if gameType == GameType.stackMoves{
+            if currentState is ExecuteMovesState {
+                let winner = referee.determineWinner()
+                currentState = GameOverState(winner: winner, gameViewController: self)
+            } else if counter == 5 {
+                if let stackMoveState = currentState as? StackMovesState {
+                    let player = stackMoveState.player.next
+                    currentState = StackMovesState(player: player, gameViewController: self, markViewPrototype: player.markViewPrototype, moveInvoker: moveInvoker ?? MoveInvoker(reciever: gameboardView))
+                }
+            } else if counter == 10 {
+                currentState = ExecuteMovesState(gameViewController: self, moveInvoker: moveInvoker ?? MoveInvoker(reciever: gameboardView))
+            } else {
+                return
+            }
+            return
+        }
+        
+        
         if let winner = referee.determineWinner() {
             currentState = GameOverState(winner: winner, gameViewController: self)
             return
@@ -62,7 +88,20 @@ class GameViewController: UIViewController {
         
         if let playerInputState = currentState as? PlayerState {
             let player = playerInputState.player.next
-            currentState = PlayerState(player: playerInputState.player.next, gameViewController: self,
+            if gameType == GameType.versusPlayer {
+                currentState = PlayerState(player: playerInputState.player.next, gameViewController: self,
+                                           gameBoard: gameBoard, gameBoardView: gameboardView,
+                                           markViewPrototype: player.markViewPrototype)
+            } else {
+                currentState = AIState(player: playerInputState.player.next, gameViewController: self,
+                                                          gameBoard: gameBoard, gameBoardView: gameboardView,
+                                                          markViewPrototype: player.markViewPrototype)
+            }
+        }
+        
+        if let AIInputState = currentState as? AIState {
+            let player = AIInputState.player.next
+            currentState = PlayerState(player: AIInputState.player.next, gameViewController: self,
                                        gameBoard: gameBoard, gameBoardView: gameboardView,
                                        markViewPrototype: player.markViewPrototype)
         }

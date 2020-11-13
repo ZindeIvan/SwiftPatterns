@@ -33,19 +33,31 @@ class GameOverState: GameState {
         
         gameViewController?.firstPlayerTurnLabel.isHidden = true
         gameViewController?.secondPlayerTurnLabel.isHidden = true
+        gameViewController?.yourTurnLabel.isHidden = true
     }
     
     func addMark(at position: GameboardPosition) { }
     
     
     func getWinnerName(from: Player) -> String {
-        switch winner {
-        case .first:
-            return "1st player"
-        case .second:
-            return "2nd player"
-        case .none:
-            return "there is no winner"
+        if gameViewController?.gameType == GameType.versusPlayer {
+            switch winner {
+            case .first:
+                return "1st player"
+            case .second:
+                return "2nd player"
+            case .none:
+                return "there is no winner"
+            }
+        } else {
+            switch winner {
+            case .first:
+                return "Player"
+            case .second:
+                return "A.I."
+            case .none:
+                return "there is no winner"
+            }
         }
     }
     
