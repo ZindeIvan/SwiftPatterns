@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskManagerViewCell" id="KGk-i7-Jjw" customClass="TaskManagerViewCell" customModule="TaskManager" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xeU-VB-KqS">
+                        <rect key="frame" x="5" y="6" width="272" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="272" id="FvQ-Hg-DWq"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <action selector="taskNameChanged:" destination="KGk-i7-Jjw" eventType="editingDidEnd" id="qyd-dc-Owk"/>
+                        </connections>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IiV-BY-g1D">
+                        <rect key="frame" x="365.5" y="8" width="36.5" height="30"/>
+                        <state key="normal" title="Edit"/>
+                        <connections>
+                            <action selector="editTask:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xKP-Kq-Szn"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub: 999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itx-gO-Eu4">
+                        <rect key="frame" x="291" y="13" width="70.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="xeU-VB-KqS" secondAttribute="bottom" constant="4" id="3bU-lu-iRW"/>
+                    <constraint firstItem="IiV-BY-g1D" firstAttribute="leading" secondItem="itx-gO-Eu4" secondAttribute="trailing" constant="4" id="GOq-eQ-Shh"/>
+                    <constraint firstItem="itx-gO-Eu4" firstAttribute="leading" secondItem="xeU-VB-KqS" secondAttribute="trailing" constant="14" id="RkH-5h-GFg"/>
+                    <constraint firstItem="IiV-BY-g1D" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Uuv-UM-m2E"/>
+                    <constraint firstAttribute="trailing" secondItem="IiV-BY-g1D" secondAttribute="trailing" constant="12" id="Y7Z-vx-TMW"/>
+                    <constraint firstAttribute="bottom" secondItem="itx-gO-Eu4" secondAttribute="bottom" constant="10" id="YuB-jO-0Rt"/>
+                    <constraint firstItem="xeU-VB-KqS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="nel-uI-0S0"/>
+                    <constraint firstAttribute="bottom" secondItem="IiV-BY-g1D" secondAttribute="bottom" constant="6" id="qVD-eI-qte"/>
+                    <constraint firstItem="itx-gO-Eu4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="s5r-aX-FeZ"/>
+                    <constraint firstItem="xeU-VB-KqS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="wzj-lc-2jG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="taskNameTextField" destination="xeU-VB-KqS" id="hxo-le-DNc"/>
+                <outlet property="tasksCountLabel" destination="itx-gO-Eu4" id="FR2-qT-6gf"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="120.53571428571428"/>
+        </tableViewCell>
+    </objects>
+</document>

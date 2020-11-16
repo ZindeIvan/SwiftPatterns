@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "TaskManagerViewController.viewDidLoad():TaskManagerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "addButton">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TaskManagerViewCell.configure(task:):TaskManagerViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "task?.tasks.count ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
