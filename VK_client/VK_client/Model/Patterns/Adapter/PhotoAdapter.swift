@@ -12,8 +12,6 @@ import RealmSwift
 //Класс Адаптер  - для получения данных из сети,
 //  сохранения в Realm, и вывода данных в UI
 final class PhotoAdapter {
-    //Ссылка на синглтон работы с сетью
-    private let networkService = NetworkService.shared
     
     private var photosNotificationToken: NotificationToken?
     //Свойство содержит ссылку на класс работы с Realm
@@ -42,8 +40,8 @@ final class PhotoAdapter {
                  }
     
              }
-        
-        networkService.loadPhotos(token: Session.instance.token, ownerID: ownerID, albumID: albumID, photoCount: photoCount) { [weak self]  result in
+        let networkServiceProxy = NetworkServiceProxy(networkService: NetworkService.shared)
+        networkServiceProxy.loadPhotos(token: Session.instance.token, ownerID: ownerID, albumID: albumID, photoCount: photoCount) { [weak self]  result in
             switch result {
             case let .success(photos):
                 DispatchQueue.main.async {

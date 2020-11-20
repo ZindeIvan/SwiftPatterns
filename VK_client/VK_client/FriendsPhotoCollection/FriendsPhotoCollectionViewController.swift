@@ -18,9 +18,6 @@ class FriendsPhotoCollectionViewController : UICollectionViewController{
     //Свойство количество фото для отображения
     private var photoCount : Int = 3
     
-    //Свойство содержащее ссылку на класс работы с сетевыми запросами
-    private let networkService = NetworkService.shared
-    
     //Свойство содержит ссылку на класс работы с Realm
     private let realmService = RealmService.shared
     //Свойство - токен для наблюдения за изменениями данных в Realm

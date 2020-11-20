@@ -64,7 +64,8 @@ extension NewsTableViewController : UITableViewDataSource, UITableViewDelegate  
 extension NewsTableViewController {
     //Метод загрузки списка новостей из сети
     private func loadNewsFromNetwork(startFrom : String, completion: (() -> Void)? = nil){
-        NetworkService.shared.loadNews(startFrom: startFrom, token: Session.instance.token, filter: .post, newsCount: 20){ [weak self] result in
+        let networkServiceProxy = NetworkServiceProxy(networkService: NetworkService.shared)
+        networkServiceProxy.loadNews(startFrom: startFrom, token: Session.instance.token, filter: .post, newsCount: 20){ [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(news):

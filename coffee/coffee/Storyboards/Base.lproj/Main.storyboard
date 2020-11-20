@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Coffee View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="CoffeeViewController" customModule="coffee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQ7-fO-Ggv">
+                                <rect key="frame" x="62" y="136" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="993-h1-oAS"/>
+                                    <constraint firstAttribute="width" constant="100" id="eYt-zN-fY4"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="sugar_icon"/>
+                                <connections>
+                                    <action selector="sugarButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hXf-IG-iqK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UK5-xS-Jcd">
+                                <rect key="frame" x="248" y="136" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="CIr-as-g4l"/>
+                                    <constraint firstAttribute="width" constant="100" id="ib1-bs-NcH"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="milk_icon"/>
+                                <connections>
+                                    <action selector="milkButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BWf-8w-PoN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJT-fJ-aBZ">
+                                <rect key="frame" x="62" y="307" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="25s-cw-9rY"/>
+                                    <constraint firstAttribute="width" constant="100" id="5IZ-0P-gHd"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="whip_icon"/>
+                                <connections>
+                                    <action selector="whipButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vlK-qY-FZ4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Xt-II-8NZ">
+                                <rect key="frame" x="248" y="307" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="UoD-eB-UvL"/>
+                                    <constraint firstAttribute="height" constant="100" id="gVr-wl-xGq"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="cinnamon_icon"/>
+                                <connections>
+                                    <action selector="cinnamonButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="meu-js-n4Q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8a9-Aa-Lg6">
+                                <rect key="frame" x="157" y="477" width="100" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Zdd-0S-boQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="17"/>
+                                <state key="normal" title="Make">
+                                    <color key="titleColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="makeCoffe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vtY-TQ-LjU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th4-ds-s98">
+                                <rect key="frame" x="60.5" y="590" width="293" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="2Wm-0F-6Pn"/>
+                                    <constraint firstAttribute="width" constant="293" id="bqK-2s-mvS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="17"/>
+                                <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coffee: 2.00$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="js3-Zj-v7s">
+                                <rect key="frame" x="116" y="55" width="182" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="182" id="OaQ-9J-aPC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="17"/>
+                                <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sugar: 0.5$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jaj-P8-kN6">
+                                <rect key="frame" x="66" y="244" width="92" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="92" id="U9V-XJ-5wc"/>
+                                    <constraint firstAttribute="height" constant="41" id="my3-bN-KY6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="12"/>
+                                <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Milk: 1.0$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEr-ye-onD">
+                                <rect key="frame" x="250" y="244" width="96" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="VQh-Hq-lrF"/>
+                                    <constraint firstAttribute="width" constant="96" id="y58-GQ-D2X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="12"/>
+                                <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cinnamon: 0.5$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dra-jy-QdH">
+                                <rect key="frame" x="235.5" y="427" width="125" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="c19-Lp-bRj"/>
+                                    <constraint firstAttribute="width" constant="125" id="g7n-1Z-6Yu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="12"/>
+                                <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whip: 1.5$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxb-Dq-pK6">
+                                <rect key="frame" x="66.5" y="427" width="91" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="91" id="qeO-xX-5WK"/>
+                                    <constraint firstAttribute="height" constant="41" id="sto-Xw-bw7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="12"/>
+                                <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Dra-jy-QdH" firstAttribute="centerX" secondItem="4Xt-II-8NZ" secondAttribute="centerX" id="0mf-Il-iHV"/>
+                            <constraint firstItem="Dra-jy-QdH" firstAttribute="top" secondItem="4Xt-II-8NZ" secondAttribute="bottom" constant="20" id="2IO-Gm-NRs"/>
+                            <constraint firstItem="ZJT-fJ-aBZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="62" id="4gw-Re-Nl1"/>
+                            <constraint firstItem="YEr-ye-onD" firstAttribute="top" secondItem="UK5-xS-Jcd" secondAttribute="bottom" constant="8" id="57r-ml-tY0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UK5-xS-Jcd" secondAttribute="trailing" constant="66" id="7Vv-lq-ny1"/>
+                            <constraint firstItem="js3-Zj-v7s" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="11" id="94N-0l-ZEz"/>
+                            <constraint firstItem="8a9-Aa-Lg6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9a1-c8-rEI"/>
+                            <constraint firstItem="cQ7-fO-Ggv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="62" id="AGR-wD-vpf"/>
+                            <constraint firstItem="YEr-ye-onD" firstAttribute="centerX" secondItem="UK5-xS-Jcd" secondAttribute="centerX" id="BIb-R9-Kqa"/>
+                            <constraint firstItem="ZJT-fJ-aBZ" firstAttribute="top" secondItem="cQ7-fO-Ggv" secondAttribute="bottom" constant="71" id="DIc-uZ-xrK"/>
+                            <constraint firstItem="UK5-xS-Jcd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="92" id="HVB-uC-7X9"/>
+                            <constraint firstItem="4Xt-II-8NZ" firstAttribute="top" secondItem="UK5-xS-Jcd" secondAttribute="bottom" constant="71" id="Hr4-0l-byd"/>
+                            <constraint firstItem="Mxb-Dq-pK6" firstAttribute="top" secondItem="ZJT-fJ-aBZ" secondAttribute="bottom" constant="20" id="ISK-HB-i47"/>
+                            <constraint firstItem="js3-Zj-v7s" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ODl-rf-v6p"/>
+                            <constraint firstItem="8a9-Aa-Lg6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="433" id="Pha-b3-aeX"/>
+                            <constraint firstItem="cQ7-fO-Ggv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="92" id="Qq7-VI-zKk"/>
+                            <constraint firstItem="Mxb-Dq-pK6" firstAttribute="centerX" secondItem="ZJT-fJ-aBZ" secondAttribute="centerX" id="UEO-Nz-QvN"/>
+                            <constraint firstItem="UK5-xS-Jcd" firstAttribute="leading" secondItem="cQ7-fO-Ggv" secondAttribute="trailing" constant="86" id="Yid-n7-f6m"/>
+                            <constraint firstItem="Th4-ds-s98" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aVt-XW-GTs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4Xt-II-8NZ" secondAttribute="trailing" constant="66" id="nQ3-NY-NW6"/>
+                            <constraint firstItem="Jaj-P8-kN6" firstAttribute="top" secondItem="cQ7-fO-Ggv" secondAttribute="bottom" constant="8" id="ock-3a-Q66"/>
+                            <constraint firstItem="Th4-ds-s98" firstAttribute="top" secondItem="8a9-Aa-Lg6" secondAttribute="bottom" constant="43" id="rcW-1i-939"/>
+                            <constraint firstItem="4Xt-II-8NZ" firstAttribute="leading" secondItem="ZJT-fJ-aBZ" secondAttribute="trailing" constant="86" id="ubR-q1-hKk"/>
+                            <constraint firstItem="Jaj-P8-kN6" firstAttribute="centerX" secondItem="cQ7-fO-Ggv" secondAttribute="centerX" id="w0i-Yd-BF7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="cinnamonButton" destination="4Xt-II-8NZ" id="8pb-Tn-OQz"/>
+                        <outlet property="milkButton" destination="UK5-xS-Jcd" id="8Uf-oh-mfl"/>
+                        <outlet property="resultLabel" destination="Th4-ds-s98" id="UDZ-ye-ckl"/>
+                        <outlet property="sugarButton" destination="cQ7-fO-Ggv" id="KZC-5z-3yF"/>
+                        <outlet property="whipButton" destination="ZJT-fJ-aBZ" id="v1O-Se-yKr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cinnamon_icon" width="753" height="707"/>
+        <image name="milk_icon" width="511" height="511"/>
+        <image name="sugar_icon" width="222" height="225"/>
+        <image name="whip_icon" width="523" height="527"/>
+    </resources>
+</document>
