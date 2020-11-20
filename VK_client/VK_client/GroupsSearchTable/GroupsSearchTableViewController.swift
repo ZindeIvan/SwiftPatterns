@@ -16,8 +16,6 @@ class GroupsSearchTableViewController : UITableViewController {
     //Свойство содержащее массив всех групп типа структура Group
     private var groupsList : [Group] = []
     
-    //Свойство содержащее ссылку на класс работы с сетевыми запросами
-    private let networkService = NetworkService.shared
     //Свойство содержащее сервис загрузки изображений в кэш
     private var imageCacheService : ImageCacheService?
     
@@ -78,7 +76,8 @@ extension GroupsSearchTableViewController : UISearchBarDelegate {
 extension GroupsSearchTableViewController {
     //Метод поиска групп в сети
     func searchGroupsInNetwork(searchText: String){
-        networkService.groupsSearch(token: Session.instance.token, searchQuery: searchText){ [weak self] result in
+        let networkServiceProxy = NetworkServiceProxy(networkService: NetworkService.shared)
+        networkServiceProxy.groupsSearch(token: Session.instance.token, searchQuery: searchText){ [weak self] result in
             switch result {
             case let .success(groups):
                 self?.groupsList = groups

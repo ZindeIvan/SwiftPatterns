@@ -12,7 +12,7 @@ import PromiseKit
 
 
 //Класс для работы с сетевыми запросами
-class NetworkService {
+class NetworkService : NetworkServiceInterface{
     //Свойство основной ссылки на API
     private let baseURL : String = "https://api.vk.com"
     //Свойство версии API

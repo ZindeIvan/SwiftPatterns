@@ -58,6 +58,8 @@
 		B5D9D00E24EE4C1B009AC718 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D9D00D24EE4C1B009AC718 /* RealmService.swift */; };
 		B5DC8C3B24DEFDF800A00667 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC8C3A24DEFDF800A00667 /* Session.swift */; };
 		B5EB5A9F252AE4E20067AA72 /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB5A9E252AE4E20067AA72 /* ImageCacheService.swift */; };
+		B5FF4547256809C000900B24 /* NetworkServiceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF4546256809C000900B24 /* NetworkServiceProxy.swift */; };
+		B5FF454925680B1700900B24 /* NetworkServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF454825680B1700900B24 /* NetworkServiceInterface.swift */; };
 		E80F304157A46246B49A6092 /* Pods_VK_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CF06FF1A6A5B7D05AF00A1 /* Pods_VK_client.framework */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +118,8 @@
 		B5D9D00D24EE4C1B009AC718 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		B5DC8C3A24DEFDF800A00667 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		B5EB5A9E252AE4E20067AA72 /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
+		B5FF4546256809C000900B24 /* NetworkServiceProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProxy.swift; sourceTree = "<group>"; };
+		B5FF454825680B1700900B24 /* NetworkServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceInterface.swift; sourceTree = "<group>"; };
 		E7CF06FF1A6A5B7D05AF00A1 /* Pods_VK_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VK_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEAA6112649E862F2EC74568 /* Pods-VK_client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK_client.release.xcconfig"; path = "Target Support Files/Pods-VK_client/Pods-VK_client.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,6 +189,7 @@
 		B5388A9A2559A732004117F9 /* Patterns */ = {
 			isa = PBXGroup;
 			children = (
+				B5FF45452568094100900B24 /* Proxy */,
 				B5388AA02559B189004117F9 /* Adapter */,
 				B5150F5F255AD9EF003C53A7 /* Factory */,
 				B5388A9B2559A77B004117F9 /* Flyweight */,
@@ -363,6 +368,15 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
+		B5FF45452568094100900B24 /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				B5FF4546256809C000900B24 /* NetworkServiceProxy.swift */,
+				B5FF454825680B1700900B24 /* NetworkServiceInterface.swift */,
+			);
+			path = Proxy;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -502,6 +516,7 @@
 				B526A99524C9F93E005A0965 /* FriendsTableSectionHeaderView.swift in Sources */,
 				B52CB63A251F750A000A8550 /* NewsOwner.swift in Sources */,
 				B583E4ED2546DEBB001986E1 /* AsyncDisplayKitPhotoNode.swift in Sources */,
+				B5FF454925680B1700900B24 /* NetworkServiceInterface.swift in Sources */,
 				B52CB63E252077C0000A8550 /* GetDataFromRequestOperation.swift in Sources */,
 				B51BBD9B24CBBD8E00FE2822 /* NewsCell.swift in Sources */,
 				B52CB633251F7460000A8550 /* NewsItems.swift in Sources */,
@@ -525,6 +540,7 @@
 				B5388A9D2559A811004117F9 /* UIColor+Extensions.swift in Sources */,
 				B5EB5A9F252AE4E20067AA72 /* ImageCacheService.swift in Sources */,
 				B57FD40824FFF17400B64DA5 /* BaseViewController.swift in Sources */,
+				B5FF4547256809C000900B24 /* NetworkServiceProxy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
