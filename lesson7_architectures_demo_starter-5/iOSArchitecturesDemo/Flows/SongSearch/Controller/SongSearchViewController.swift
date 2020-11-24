@@ -1,23 +1,22 @@
 //
-//  ViewController.swift
+//  SongSearchViewController.swift
 //  iOSArchitecturesDemo
 //
-//  Created by ekireev on 14.02.2018.
-//  Copyright © 2018 ekireev. All rights reserved.
+//  Created by Зинде Иван on 11/24/20.
+//  Copyright © 2020 ekireev. All rights reserved.
 //
 
 import UIKit
 
-final class SearchViewController: UIViewController {
+final class SongSearchViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    private var searchView: SearchView {
-        return self.view as! SearchView
+    private var searchView: SongSearchView {
+        return self.view as! SongSearchView
     }
-    
-    private let searchService = ITunesSearchService()
-    var searchResults = [ITunesApp]() {
+
+    var searchResults = [ITunesSong]() {
         didSet {
             searchView.tableView.isHidden = false
             searchView.tableView.reloadData()
@@ -29,9 +28,9 @@ final class SearchViewController: UIViewController {
         static let reuseIdentifier = "reuseId"
     }
     
-    private let presenter: SearchViewOutput
+    private let presenter: SongSearchViewOutput
     
-    init(presenter: SearchViewOutput) {
+    init(presenter: SongSearchViewOutput) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -45,14 +44,14 @@ final class SearchViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        self.view = SearchView()
+        self.view = SongSearchView()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.searchView.searchBar.delegate = self
-        self.searchView.tableView.register(AppCell.self, forCellReuseIdentifier: Constants.reuseIdentifier)
+        self.searchView.tableView.register(SongCell.self, forCellReuseIdentifier: Constants.reuseIdentifier)
         self.searchView.tableView.delegate = self
         self.searchView.tableView.dataSource = self
     }
@@ -64,7 +63,7 @@ final class SearchViewController: UIViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension SearchViewController: UITableViewDataSource {
+extension SongSearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
@@ -72,31 +71,23 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: Constants.reuseIdentifier, for: indexPath)
-        guard let cell = dequeuedCell as? AppCell else {
+        guard let cell = dequeuedCell as? SongCell else {
             return dequeuedCell
         }
-        let app = self.searchResults[indexPath.row]
-        let cellModel = AppCellModelFactory.cellModel(from: app)
+        let song = self.searchResults[indexPath.row]
+        let cellModel = SongCellModelFactory.cellModel(from: song)
         cell.configure(with: cellModel)
         return cell
     }
 }
 
 //MARK: - UITableViewDelegate
-extension SearchViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let app = searchResults[indexPath.row]
-        let appDetaillViewController = AppDetailViewController(app: app)
-        appDetaillViewController.app = app
-        presenter.viewDidSelectApp(app)
-//        navigationController?.pushViewController(appDetaillViewController, animated: true)
-    }
+extension SongSearchViewController: UITableViewDelegate {
+
 }
 
 //MARK: - UISearchBarDelegate
-extension SearchViewController: UISearchBarDelegate {
+extension SongSearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let query = searchBar.text else {
@@ -109,11 +100,12 @@ extension SearchViewController: UISearchBarDelegate {
         }
         
         presenter.viewDidSearch(with: query)
-//        self.requestApps(with: query)
     }
 }
 
-extension SearchViewController: SearchViewInput {
+extension SongSearchViewController: SongSearchViewInput {
+    
+    
     // MARK: - Private
     
     func throbber(show: Bool) {

@@ -14,6 +14,8 @@ final class AppDetailViewController: UIViewController {
     
     lazy var headerViewController = AppDetailHeaderViewController(app: app)
     
+    lazy var versionViewController = AppDetailVersionViewController(app: app)
+    
     private let imageDownloader = ImageDownloader()
     
     private var appDetailView: AppDetailView {
@@ -50,7 +52,7 @@ final class AppDetailViewController: UIViewController {
         self.navigationItem.largeTitleDisplayMode = .never
         
         addChildViewController()
-        addDescriptionViewController()
+        addVersionViewController()
         
     }
     
@@ -69,21 +71,18 @@ final class AppDetailViewController: UIViewController {
         ])
     }
     
-    private func addDescriptionViewController() {
-        // Дз: Добавить дочерний вью контроллер
-        let vc = UIViewController()
+    private func addVersionViewController() {
         
-        self.addChild(vc)
-        self.view.addSubview(vc.view)
-        vc.didMove(toParent: self)
+        self.addChild(versionViewController)
+        self.view.addSubview(versionViewController.view)
+        self.versionViewController.didMove(toParent: self)
         
-        vc.view.translatesAutoresizingMaskIntoConstraints = false
+        versionViewController.view.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            vc.view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-            vc.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            vc.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            vc.view.heightAnchor.constraint(equalToConstant: 250.0)
+            versionViewController.view.topAnchor.constraint(equalTo:  self.headerViewController.view.bottomAnchor),
+            versionViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            versionViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
         ])
     }
 }
