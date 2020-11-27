@@ -10,15 +10,14 @@ import UIKit
 
 protocol SongSearchRouterInput {
     func openSong(for song: ITunesSong)
-//    func openAppInItunes(app: ITunesSong)
 }
 
 class SongSearchRouter: SongSearchRouterInput {
     weak var viewController: UIViewController?
     
     func openSong(for song: ITunesSong) {
-//        let appDetailViewController = AppDetailViewController(app: app)
-//        viewController?.navigationController?.pushViewController(appDetailViewController, animated: true)
+        let songDetailViewController = SongDetailViewController(song: song)
+        viewController?.navigationController?.pushViewController(songDetailViewController, animated: true)
     }
     
 }
